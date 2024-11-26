@@ -6,9 +6,9 @@ import { StacksNetwork } from '@stacks/network';
 import {
   FungibleConditionCode,
   contractPrincipalCV,
-  makeStandardSTXPostCondition,
   noneCV,
   uintCV,
+  makeStandardSTXPostCondition
 } from '@stacks/transactions';
 import * as yup from 'yup';
 
