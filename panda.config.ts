@@ -15,7 +15,11 @@ export default defineConfig({
   prefix: 'leather',
 
   presets: ['@leather.io/panda-preset'],
-
+  globalFontface: {
+    Diatype: {
+      src: 'url(/fonts/marche-super-pro.woff2)',
+    },
+  },
   studio: { logo: '💼' },
 
   jsxFramework: 'react',

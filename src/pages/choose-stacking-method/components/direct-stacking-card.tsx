@@ -1,7 +1,7 @@
 import { Box, Flex } from '@stacks/ui';
 import { IconLock, IconStairs } from '@tabler/icons-react';
 
-import fishBowlIllustration from '@assets/images/stack-by-yourself.svg';
+import FishBowlIllustration from '@assets/images/stack-by-yourself.svg';
 import { Unassignee } from '@components/icons/unassignee';
 import { toHumanReadableStx } from '@utils/unit-convert';
 
@@ -10,7 +10,7 @@ import {
   StackingOptionsCardDescription as Description,
   StackingOptionCardBenefit as OptionBenefit,
   StackingOptionCardBenefitContainer as OptionBenefitContainer,
-  StackingOptionCardTitle as Title,
+  StackingOptionCardTitle,
 } from '../components/start-stacking-layout';
 import { ChooseStackingMethodLayoutProps } from '../types';
 import { DirectStackingButton } from './direct-stacking-button';
@@ -20,13 +20,9 @@ export function DirectStackingCard(props: ChooseStackingMethodLayoutProps) {
   return (
     <Card mt={['extra-loose', null, null, 'unset']}>
       <Box height="130px">
-        <img
-          src={fishBowlIllustration}
-          width="150px"
-          alt="A dark fishbowl with a lone fish facing right, perhaps contemplating the benefits of Stacking, by Eugenia Digon"
-        />
+        <FishBowlIllustration />
       </Box>
-      <Title>Stack independently</Title>
+      <StackingOptionCardTitle>Stack independently</StackingOptionCardTitle>
 
       <Description>
         When you stack Independently, you&apos;ll interact with the protocol directly. This approach

@@ -1,15 +1,18 @@
 import { FC } from 'react';
 
-import { Box, BoxProps, Flex, FlexProps, styled } from 'leather-styles/jsx';
-import { Button, ButtonProps } from '@leather.io/ui';
+import { Box, BoxProps, Flex, FlexProps, Grid, GridProps, styled } from 'leather-styles/jsx';
+import { Button, ButtonProps, ErrorCircleIcon } from '@leather.io/ui';
 import { token } from 'leather-styles/tokens';
 
 export const StartStackingLayout: FC<BoxProps> = props => (
-  <Box style={{ maxWidth: '1400px', margin: '0 auto' }} {...props} />
+  <Box
+    backgroundColor={token('colors.ink.background-primary')}
+    style={{ maxWidth: '1400px', margin: '0 auto' }}
+    {...props}
+  />
 );
-
-export const StackingOptionsCardContainer: FC<FlexProps> = props => (
-  <Flex justifyContent="space-between" {...props} />
+export const StackingOptionsCardContainer: FC<GridProps> = props => (
+  <Grid gridTemplateColumns={'1fr 1fr 1fr'} gridGap={0} {...props} />
 );
 
 export const StackingOptionCard: FC<FlexProps> = ({ children, ...props }) => (
@@ -17,8 +20,9 @@ export const StackingOptionCard: FC<FlexProps> = ({ children, ...props }) => (
     flexDirection="column"
     borderRadius="6px"
     margin="auto"
-    flex={1}
     maxWidth={[null, null, '320px', '420px']}
+    minHeight={['320px', '420px']}
+    style={{ padding: token('spacing.space.03'), border: `${token('borders.subdued')}` }}
     {...props}
   >
     {children}
@@ -26,11 +30,11 @@ export const StackingOptionCard: FC<FlexProps> = ({ children, ...props }) => (
 );
 
 export const StackingOptionCardTitle: FC<BoxProps> = props => (
-  <styled.h1 fontSize="32px" mt="base-loose" {...props} />
+  <styled.h1 textStyle="heading.01" fontSize="32px" mt="base-loose" {...props} />
 );
 
 export const StackingOptionsCardDescription: FC<BoxProps> = props => (
-  <styled.p textStyle="label.01" marginTop="extra-loose" {...props} />
+  <styled.p textStyle="body.01" marginTop="extra-loose" {...props} />
 );
 
 export const StackingOptionCardBenefitContainer: FC<BoxProps> = props => (
@@ -43,7 +47,7 @@ interface StackingOptionCardBenefitProps extends BoxProps {
 export const StackingOptionCardBenefit: FC<StackingOptionCardBenefitProps> = props => {
   const { icon: Icon, ...rest } = props;
   return (
-    <Flex alignItems="center" my="base" border={`1px solid red`}>
+    <Flex alignItems="center" my="base">
       <Flex width="32px" justifyContent="center" alignItems="center" mr="tight">
         <Icon />
       </Flex>
@@ -58,19 +62,14 @@ export const StackingOptionCardBenefit: FC<StackingOptionCardBenefitProps> = pro
 };
 
 export const StackingOptionCardButton: FC<ButtonProps> = props => (
-  <Button alignSelf="flex-start" mt="base" {...props} />
+  <Button variant="solid" alignSelf="flex-start" mt="base" {...props} />
 );
 
 export const InsufficientStackingBalanceWarning: FC<FlexProps> = props => (
-  <Flex
-    color={token('colors.red.border')}
-    ml="base"
-    mt="base-tight"
-    alignItems="center"
-    textStyle="body.small"
-    {...props}
-  >
-    Insufficient balance
-    {/* <ErrorCircleIcon variant="small" /> */}
+  <Flex color={token('colors.red.border')} alignItems="center" {...props}>
+    <styled.span textStyle="label.02" textAlign={'bottom'} marginLeft="loose">
+      Insufficient balance
+    </styled.span>
+    <ErrorCircleIcon variant="small" color={token('colors.red.action-primary-default')} />
   </Flex>
 );

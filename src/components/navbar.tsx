@@ -1,25 +1,27 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Box, Button, Flex, Text, color } from '@stacks/ui';
+import { Box, Flex, styled } from 'leather-styles/jsx';
 import { useGlobalContext } from 'src/context/use-app-context';
 import { useHover } from 'use-events';
 
-import darkLogo from '@assets/images/logo-dark.svg';
-import lightLogo from '@assets/images/logo.svg';
+import darkLogo from '../assets/images/logo-dark.svg';
+import lightLogo from '../assets/images/logo.svg';
 import { createSearch } from '@utils/networks';
 import { truncateMiddle } from '@utils/tx-utils';
 
 import { useAuth } from './auth-provider/auth-provider';
 import { NetworkInfo } from './network-info';
 import { OpenLinkInNewTab } from './open-link-in-new-tab';
+import { token } from 'leather-styles/tokens';
+import { Button } from '@leather.io/ui';
 
 export function Navbar() {
   const { isSignedIn, signOut, signIn, address } = useAuth();
   const [isHovered, bind] = useHover();
   const { activeNetwork } = useGlobalContext();
 
-  const logo = useMemo(() => {
+  const Logo = useMemo(() => {
     const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     return isDark ? darkLogo : lightLogo;
   }, []);
@@ -29,12 +31,12 @@ export function Navbar() {
       flexDirection="row"
       justifyContent="space-between"
       p="base-loose"
-      borderBottom={`1px solid ${color('border')}`}
+      style={{ borderBottom: `${token('borders.default')}` }}
     >
       <Flex alignItems="center">
         <Link to={`/${createSearch(activeNetwork)}`}>
           <Flex alignItems="center">
-            <img src={logo} alt="Site logo with Stacks symbol and Stacking text" />
+            <Logo />
           </Flex>
         </Link>
       </Flex>
@@ -42,29 +44,24 @@ export function Navbar() {
         <Flex p="sm" justify="right" alignItems="center">
           <NetworkInfo />
           <OpenLinkInNewTab href="https://wallet.hiro.so/wallet/faq#stacking" px="loose">
-            <Text color={color('text-body')} fontWeight={500}>
+            <styled.p textStyle="label.02" fontWeight={500}>
               FAQ
-            </Text>
+            </styled.p>
           </OpenLinkInNewTab>
           <Box pr="12px">
             {isSignedIn && address ? (
               <Button
                 width="160px"
                 boxShadow="none"
+                variant="outline"
                 _hover={{ boxShadow: 'none' }}
-                mode="tertiary"
                 onClick={() => signOut()}
                 {...bind}
               >
                 {isHovered ? 'Sign out' : truncateMiddle(address)}
               </Button>
             ) : (
-              <Button
-                boxShadow="none"
-                _hover={{ boxShadow: 'none' }}
-                mode="tertiary"
-                onClick={() => signIn()}
-              >
+              <Button boxShadow="none" _hover={{ boxShadow: 'none' }} onClick={() => signIn()}>
                 Connect wallet
               </Button>
             )}

@@ -1,7 +1,7 @@
 import { Box, Flex } from '@stacks/ui';
 import { IconLock, IconStairs } from '@tabler/icons-react';
 
-import divingBoardIllustration from '@assets/images/stack-in-a-pool.svg';
+import DivingBoardIllustration from '@assets/images/stack-in-a-pool.svg';
 import { Users } from '@components/icons/users';
 
 import {
@@ -19,11 +19,7 @@ export function PooledStackingCard(props: ChooseStackingMethodLayoutProps) {
   return (
     <Card>
       <Box height="130px">
-        <img
-          src={divingBoardIllustration}
-          width="150px"
-          alt="Diving board illustration with a blue gradient and ominous-looking hole by Eugenia Digon"
-        />
+        <DivingBoardIllustration />
       </Box>
       <Title>Stack in a pool</Title>
       <Description>

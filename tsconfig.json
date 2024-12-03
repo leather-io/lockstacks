@@ -17,7 +17,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"]
     },
-    "types": ["vitest/globals", "chrome"],
+    "types": ["vitest/globals"],
     "resolveJsonModule": true,
     "sourceMap": true,
     "removeComments": true,
