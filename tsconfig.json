@@ -1,15 +1,17 @@
 {
-  "include": ["src"],
+  "include": ["src", "leather-styles", "theme", "panda.config.ts", "vite.config.ts"],
+
   "references": [{ "path": "./tsconfig.node.json" }],
 
   "compilerOptions": {
     // Type Checking
     "strict": true,
-
+    "composite": true,
+    "allowSyntheticDefaultImports": true,
     // Modules
     "baseUrl": ".",
-    "module": "ESNext",
-    "moduleResolution": "node",
+    "module": "preserve",
+    "moduleResolution": "bundler",
     "paths": {
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],

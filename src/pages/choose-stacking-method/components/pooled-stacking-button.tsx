@@ -15,15 +15,18 @@ export function PooledStackingButton(props: ChooseStackingMethodLayoutProps) {
 
   return (
     <OptionButton
-      onClick={() => {
-        if (!props.isSignedIn) {
-          signIn();
-          return;
-        }
+      onClick={
+        !isDisabled
+          ? () => {
+              if (!props.isSignedIn) {
+                signIn();
+                return;
+              }
 
-        navigate('../start-pooled-stacking');
-      }}
-      isDisabled={isDisabled}
+              navigate('../start-pooled-stacking');
+            }
+          : undefined
+      }
     >
       Stack in a pool
     </OptionButton>

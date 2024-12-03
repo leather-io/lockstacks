@@ -12,15 +12,18 @@ export function LiquidStackingButton(props: ChooseStackingMethodLayoutProps) {
 
   return (
     <OptionButton
-      onClick={() => {
-        if (!props.isSignedIn) {
-          signIn();
-          return;
-        }
+      onClick={
+        !isDisabled
+          ? () => {
+              if (!props.isSignedIn) {
+                signIn();
+                return;
+              }
 
-        navigate('../start-liquid-stacking');
-      }}
-      isDisabled={isDisabled}
+              navigate('../start-liquid-stacking');
+            }
+          : undefined
+      }
     >
       Stack liquid
     </OptionButton>

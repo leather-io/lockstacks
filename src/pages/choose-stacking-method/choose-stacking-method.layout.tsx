@@ -1,7 +1,4 @@
-import { Box, Stack } from '@stacks/ui';
-
-import { figmaTheme } from '@constants/figma-theme';
-
+import { Box, Stack } from 'leather-styles/jsx';
 import { DirectStackingCard } from './components/direct-stacking-card';
 import { LiquidStackingCard } from './components/liquid-stacking-card';
 import { Messages } from './components/messages';
@@ -11,12 +8,15 @@ import {
   StackingOptionsCardContainer as OptionsContainer,
 } from './components/start-stacking-layout';
 import { ChooseStackingMethodLayoutProps } from './types';
+import { token } from 'leather-styles/tokens';
 
 function Separator() {
+  console.log(token('borders.subdued'));
+
   return (
     <Box
       display={['none', 'none', 'none', 'inherit']}
-      borderLeft={`1px solid ${figmaTheme.borderSubdued}`}
+      border={`1px solid ${token('borders.subdued')}`}
     ></Box>
   );
 }
