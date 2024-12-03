@@ -1,12 +1,9 @@
 {
   "include": ["src", "leather-styles", "theme", "panda.config.ts", "vite.config.ts"],
 
-  "references": [{ "path": "./tsconfig.node.json" }],
-
   "compilerOptions": {
     // Type Checking
     "strict": true,
-    "composite": true,
     "allowSyntheticDefaultImports": true,
     // Modules
     "baseUrl": ".",
@@ -20,9 +17,10 @@
       "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"]
     },
-
+    "types": ["vitest/globals", "chrome"],
     "resolveJsonModule": true,
-
+    "sourceMap": true,
+    "removeComments": true,
     // Emit
     "noEmit": true,
 

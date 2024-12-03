@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Box, BoxProps, Flex, FlexProps, styled } from 'leather-styles/jsx';
-import { Button, ErrorCircleIcon, ButtonProps } from '@leather.io/ui';
+import { Button, ButtonProps } from '@leather.io/ui';
 import { token } from 'leather-styles/tokens';
 
 export const StartStackingLayout: FC<BoxProps> = props => (
@@ -43,7 +43,7 @@ interface StackingOptionCardBenefitProps extends BoxProps {
 export const StackingOptionCardBenefit: FC<StackingOptionCardBenefitProps> = props => {
   const { icon: Icon, ...rest } = props;
   return (
-    <Flex alignItems="center" my="base">
+    <Flex alignItems="center" my="base" border={`1px solid red`}>
       <Flex width="32px" justifyContent="center" alignItems="center" mr="tight">
         <Icon />
       </Flex>
@@ -71,6 +71,6 @@ export const InsufficientStackingBalanceWarning: FC<FlexProps> = props => (
     {...props}
   >
     Insufficient balance
-    <ErrorCircleIcon width="16px" spacing={4} />
+    {/* <ErrorCircleIcon variant="small" /> */}
   </Flex>
 );
