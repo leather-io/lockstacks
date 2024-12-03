@@ -15,15 +15,18 @@ export function DirectStackingButton(props: ChooseStackingMethodLayoutProps) {
 
   return (
     <OptionButton
-      onClick={() => {
-        if (!props.isSignedIn) {
-          signIn();
-          return;
-        }
+      onClick={
+        !isDisabled
+          ? () => {
+              if (!props.isSignedIn) {
+                signIn();
+                return;
+              }
 
-        navigate('../start-direct-stacking');
-      }}
-      isDisabled={isDisabled}
+              navigate('../start-direct-stacking');
+            }
+          : undefined
+      }
     >
       Stack independently
     </OptionButton>

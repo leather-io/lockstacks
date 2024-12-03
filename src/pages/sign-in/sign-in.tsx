@@ -5,7 +5,6 @@ import { Navigate } from '@components/navigate';
 
 import { Hero } from '../../components/hero';
 import { ChooseStackingMethodAuthHandler } from '../choose-stacking-method/choose-stacking-method';
-import { Banner } from './banner';
 
 export function SignIn() {
   const { isSignedIn } = useAuth();
@@ -15,7 +14,6 @@ export function SignIn() {
 
   return (
     <Box>
-      <Banner />
       <Hero />
       <ChooseStackingMethodAuthHandler />
     </Box>
